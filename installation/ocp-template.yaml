@@ -1,0 +1,43 @@
+apiVersion: v1
+baseDomain: igor.dev.draios.com
+credentialsMode: Mint
+compute:
+  - architecture: amd64
+    hyperthreading: Enabled
+    name: worker
+    platform:
+      aws:
+        type: t3.xlarge
+    replicas: 1
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    aws:
+      type: t3.2xlarge
+  replicas: 2
+metadata:
+  name: igor-ocp
+networking:
+  clusterNetwork:
+    - cidr: 10.128.0.0/14
+      hostPrefix: 23
+  machineNetwork:
+    - cidr: 10.0.0.0/16
+  networkType: OpenShiftSDN
+  serviceNetwork:
+    - 172.30.0.0/16
+platform:
+  aws:
+    region: us-east-1
+    subnets:
+    - subnet-0857b5dc4169c4edc
+    - subnet-0fc535dc249708717
+    - subnet-0f3538802d0c22c44
+    - subnet-0a3881db650696106
+    - subnet-0d24f0d7cbae6fa60
+    - subnet-03cf65e6875a2a953
+publish: External
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfOTBjMDU0ZmE4YmE3NDE2YWEzMTk1NjgxYzNkYWNkYWI6SE1SRU0yWTQwU1U1OERSRUdDOU9VMk9ISUU2VlRGQTVOSzZZNEM0RkFTSzBUVkZGS1EyMTA0UU5KUkhHSEkwMA==","email":"igoreulalio.ie@gmail.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfOTBjMDU0ZmE4YmE3NDE2YWEzMTk1NjgxYzNkYWNkYWI6SE1SRU0yWTQwU1U1OERSRUdDOU9VMk9ISUU2VlRGQTVOSzZZNEM0RkFTSzBUVkZGS1EyMTA0UU5KUkhHSEkwMA==","email":"igoreulalio.ie@gmail.com"},"registry.connect.redhat.com":{"auth":"fHVoYy1wb29sLTc2ZjM0NWRkLWFmMGItNDdiYy05MjZjLTEzNzMxNzQyNzAyYTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSXdNVGd3WkdRek1USXpaalkwTkRoa09EVXlOVGRsWW1Vd1pUTTVaVEF4WVNKOS53T2ZuMTM2azJKU19BSndTakQySGcwUTh5bW44MURWbk0ydzB1MUR3TS1CM3dXbnVMR1F6dDEzMjIxX3h5QkZ1OGFFcHZ6aDg2NFVUSXNXY3NRZk9aN3RQWnB1eG4ybjlMbmVzaVFWeFVwMFpYR1EzQ3M4RWhSeGhtLUtyOHMxWTVIT2ZKc0d1Vk1CQjZ0YnZwckZIWE9Ta0tuZXpVN1YzdjdZOUlmNEhOLU4wNEVxenFhOWk2c0ZBSWZKTENiQkZtbHMzWV9LMmQ4dFJ3SWo3NllvenVVUnhJdWlYTFUzX2wzMnE5LWtlLUQxVHNyUUdWUzZhTkNpbF9QNXRVQlhkei1OY0FQaklmWXdaXzNwVU9LaFlFWUw3SDFqWFQ4OGF6N0dTWUdXYUl2Y3VUZ0pMNmo2RzdzZTlSU3hlLUU5YkNHaEdJVnZoMkh4eXZ5TFpRTDU0Rkx4YUM0ZWtVcUpnRlExWVhkZzJBcEVySUdOcVMtOHRyV1FnYk00T0tmei0xeUpwbUVoXzBERFNtSzQwYUduMzFPVE1pWTNYb1FCOUdlSDJrNmloWTVfcjRRQmhCUVFnUUNyRm9LNVVOX01nYzdKVzhHY3dDWHlwZlEydE1razRYRlZlU0pObzBzTlJ6NjJNV1NOdkpVeEZySlR4VGtpT1Z0THN0aUpYUFhNVENHdEw5LTg2OHpVdEVmdHh4eHBDRTZYclZlMXYwTnJxbTBHaHB3NTJwRFJIQTF6WFhwMEl4OWdQM2xXamJsaFRZbU91Nmt6U0VZUGtHT2tkaHJNZHhCcWdNV2xYUENVcXFlamtiXy1pNjFLeXhvOHhEazZmMmQySTg3bW1FUTFBaHNBRlVqMm8xMWY4dmtORXdaRjl2dFhrZndRR3ZvZGxQOG93d2stUUE3RQ==","email":"igoreulalio.ie@gmail.com"},"registry.redhat.io":{"auth":"fHVoYy1wb29sLTc2ZjM0NWRkLWFmMGItNDdiYy05MjZjLTEzNzMxNzQyNzAyYTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSXdNVGd3WkdRek1USXpaalkwTkRoa09EVXlOVGRsWW1Vd1pUTTVaVEF4WVNKOS53T2ZuMTM2azJKU19BSndTakQySGcwUTh5bW44MURWbk0ydzB1MUR3TS1CM3dXbnVMR1F6dDEzMjIxX3h5QkZ1OGFFcHZ6aDg2NFVUSXNXY3NRZk9aN3RQWnB1eG4ybjlMbmVzaVFWeFVwMFpYR1EzQ3M4RWhSeGhtLUtyOHMxWTVIT2ZKc0d1Vk1CQjZ0YnZwckZIWE9Ta0tuZXpVN1YzdjdZOUlmNEhOLU4wNEVxenFhOWk2c0ZBSWZKTENiQkZtbHMzWV9LMmQ4dFJ3SWo3NllvenVVUnhJdWlYTFUzX2wzMnE5LWtlLUQxVHNyUUdWUzZhTkNpbF9QNXRVQlhkei1OY0FQaklmWXdaXzNwVU9LaFlFWUw3SDFqWFQ4OGF6N0dTWUdXYUl2Y3VUZ0pMNmo2RzdzZTlSU3hlLUU5YkNHaEdJVnZoMkh4eXZ5TFpRTDU0Rkx4YUM0ZWtVcUpnRlExWVhkZzJBcEVySUdOcVMtOHRyV1FnYk00T0tmei0xeUpwbUVoXzBERFNtSzQwYUduMzFPVE1pWTNYb1FCOUdlSDJrNmloWTVfcjRRQmhCUVFnUUNyRm9LNVVOX01nYzdKVzhHY3dDWHlwZlEydE1razRYRlZlU0pObzBzTlJ6NjJNV1NOdkpVeEZySlR4VGtpT1Z0THN0aUpYUFhNVENHdEw5LTg2OHpVdEVmdHh4eHBDRTZYclZlMXYwTnJxbTBHaHB3NTJwRFJIQTF6WFhwMEl4OWdQM2xXamJsaFRZbU91Nmt6U0VZUGtHT2tkaHJNZHhCcWdNV2xYUENVcXFlamtiXy1pNjFLeXhvOHhEazZmMmQySTg3bW1FUTFBaHNBRlVqMm8xMWY4dmtORXdaRjl2dFhrZndRR3ZvZGxQOG93d2stUUE3RQ==","email":"igoreulalio.ie@gmail.com"}}}'
+sshKey: |-

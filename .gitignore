@@ -1,0 +1,5 @@
+installation/.openshift_install.log
+installation/.openshift_install_state.json
+installation/containerd.sock
+installation/openshift-install
+*.tfstate
